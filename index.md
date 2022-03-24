@@ -1,10 +1,10 @@
-### Usage and Samples
+## Usage and Samples
 
 API results are served from GCP US-Central-1 at the following URL:
 
 [https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main](https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main)
 
-## Full Listings
+### Full Listings
 
 By default, calls to the `main` entrypoint above will return a full set of all medications available. For example,
 
@@ -43,11 +43,11 @@ returns:
 
 ```
 
-Canonical information is available at the returned `url` for each medication.
+Canonical purchase information is available at the returned `url` for each medication.
 
 A full example output, with offerings and prices as of 2022-03-23, is available [here](output-ex-001.json).
 
-## Search and query filters
+### Search and query filters
 
 In addition to the full listings, the following query string parameters may be used to search for specific medications
 or sets of medications:
@@ -133,7 +133,7 @@ by adding a `strength` parameter, returns the same individual result as the abov
 curl "https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main?brand_name=Elavil&strength=10mg"
 ```
 
-## Price and quantity queries
+### Price and quantity queries
 
 Quotes for specific products at given unit quantities can be requested with the aditional parameter `quantity_units`. Each of:
 
