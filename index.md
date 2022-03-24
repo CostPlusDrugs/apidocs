@@ -1,14 +1,14 @@
 ## Usage and Samples
 
-API results are served from GCP US-Central-1 at the following URL:
+Cost Plus Drugs provides an API, with results served from GCP US-Central-1 at the following URL:
 
 [https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main](https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main)
 
 ### Full Listings
 
-By default, calls to the `main` entrypoint above will return a full set of all medications available. For example,
+By default, calls to the `main` entrypoint will return a full set of all medications available. For example,
 
-```
+```bash
 curl "https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main"
 ```
 
@@ -59,10 +59,12 @@ or sets of medications:
 
 For example,
 
-```
+```bash
 curl "http://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main?ndc=16729017117"
 ```
+
 finds the corresponding NDC:
+
 ```json
 {
   "results": [
@@ -82,12 +84,12 @@ finds the corresponding NDC:
 ```
 A related search, by brand name:
 
-```
+```bash
 curl "https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main?brand_name=Elavil"
 ```
 returns all available strengths of *Amitriptyline*:
 
-```
+```json
 {
   "results": [
     {
@@ -129,7 +131,7 @@ returns all available strengths of *Amitriptyline*:
 Combinations of search parameters are also supported. For example, further specifying a desired dosage,
 by adding a `strength` parameter, returns the same individual result as the above `ndc` query:
 
-```
+```bash
 curl "https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main?brand_name=Elavil&strength=10mg"
 ```
 
@@ -137,15 +139,15 @@ curl "https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main?brand_
 
 Quotes for specific products at given unit quantities can be requested with the aditional parameter `quantity_units`. Each of:
 
-```
+```bash
 curl "http://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main?ndc=16729017117&quantity_units=30"
 ```
 and
-```
+```bash
 curl "http://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main?medication_name=amitriptyline&strength=10mg&quantity_units=30"
 ```
 return:
-```
+```json
 {
   "results": [
     {
@@ -169,7 +171,7 @@ return:
 Price quotes via search by brand name are also supported, however callers *must* specify that generic equivalents are
 acceptable, with the additional query term `generic_equivalent_ok` set to `yes` or `true`. That is,
 
-```
+```bash
 curl "http://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main?brand_name=elavil&strength=10mg&quantity_units=30"
 ```
 returns the partial error:
@@ -184,11 +186,11 @@ returns the partial error:
 ```
 To search for generics by equivalent brand, the format is:
 
-```
+```bash
 curl "http://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main?brand_name=elavil&strength=10mg&quantity_units=30&generic_equivalent_ok=true"
 ```
 which returns:
-```
+```json
 {
   "results": [
     {
