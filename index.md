@@ -1,8 +1,17 @@
+## About Us
+
+Mark Cuban Cost Plus Drugs is committed to selling medications at transparent and affordable prices.
+Read more about [our mission](https://costplusdrugs.com/mission/).
+
 ## Usage and Samples
 
 Cost Plus Drugs provides an API, with results served from GCP US-Central-1 at the following URL:
 
 [https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main](https://us-central1-costplusdrugs-publicapi.cloudfunctions.net/main)
+
+In all cases, canonical and authoritative purchase information is available at the
+returned `url` for each medication. For API calls requesting unit quantities, a price estimate is
+provided, subject to additional shipping charges and terms available at the returned `url`.
 
 ### Full Listings
 
@@ -42,8 +51,6 @@ returns:
   ...
 
 ```
-
-Canonical purchase information is available at the returned `url` for each medication.
 
 A full example output, with offerings and prices as of 2022-03-23, is available [here](output-ex-001.json).
 
